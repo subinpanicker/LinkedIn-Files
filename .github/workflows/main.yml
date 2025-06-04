@@ -1,0 +1,16 @@
+name: Auto-Create Post Folders
+on: [push]
+jobs:
+  organize:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Create folder
+        run: |
+          mkdir -p "Post-${{ github.run_number }}-${{ github.event.head_commit.message }}"
+          mv *.pdf "Post-${{ github.run_number }}-${{ github.event.head_commit.message }}/"
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+          git add .
+          git commit -m "Auto-organized files for Post ${{ github.run_number }}"
+          git push
