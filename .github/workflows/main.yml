@@ -5,7 +5,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Create folder
+      - name: The Future of AI Hardware
         run: |
           mkdir -p "Post-${{ github.run_number }}-${{ github.event.head_commit.message }}"
           mv *.pdf "Post-${{ github.run_number }}-${{ github.event.head_commit.message }}/"
